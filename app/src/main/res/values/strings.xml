@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GDGHaNoiCheckin</string>
+    <string name="content_role">Vai trò :%s</string>
+    <string name="text_complete">Tạo QR thành công</string>
+    <string name="text_loading">Đang thực hiện tạo QR</string>
+    <string name="text_email_existed">Tài khoản đã tồn tại</string>
+
+    <string name="text_check_in_success">"Check in thành công"</string>
+    <string name="text_check_in_failure">"Check in thât bại"</string>
+</resources>

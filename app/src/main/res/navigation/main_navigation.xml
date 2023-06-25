@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.lxn.gdghanoicheckin.features.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_scanFragment"
+            app:destination="@id/scanFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.lxn.gdghanoicheckin.features.scan.ScanFragment"
+        android:label="ScanFragment"
+        tools:layout="@layout/fragment_scan">
+        <action
+            android:id="@+id/action_scanFragment_to_confirmQrFragment"
+            app:destination="@id/confirmQrFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmQrFragment"
+        android:name="com.lxn.gdghanoicheckin.features.confirm.ConfirmQrFragment"
+        android:label="ConfirmQrFragment"
+        tools:layout="@layout/fragment_confirm_qr" >
+        <action
+            android:id="@+id/action_confirmQrFragment_to_successDialog"
+            app:destination="@id/successDialog" />
+        <action
+            android:id="@+id/action_confirmQrFragment_to_loadingDialog"
+            app:destination="@id/loadingDialog" />
+        <action
+            android:id="@+id/action_confirmQrFragment_to_errorDialog"
+            app:destination="@id/errorDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/successDialog"
+        tools:layout="@layout/dialog_success"
+        android:name="com.lxn.gdghanoicheckin.popup.SuccessDialog"
+        android:label="SuccessDialog" >
+        <action
+            android:id="@+id/action_successDialog_to_mainFragment"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/main_navigation"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_successDialog_to_scanFragment"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/main_navigation"
+            app:destination="@id/scanFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/errorDialog"
+        tools:layout="@layout/dialog_error"
+        android:name="com.lxn.gdghanoicheckin.popup.ErrorDialog"
+        android:label="ErrorDialog" >
+        <action
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/main_navigation"
+            android:id="@+id/action_errorDialog_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_errorDialog_to_scanFragment"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/main_navigation"
+            app:destination="@id/scanFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/loadingDialog"
+        tools:layout="@layout/dialog_loading"
+        android:name="com.lxn.gdghanoicheckin.popup.LoadingDialog"
+        android:label="LoadingDialog" />
+</navigation>

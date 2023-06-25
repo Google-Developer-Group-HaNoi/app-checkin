@@ -1,1 +1,1 @@
-# gdghanoi-checkin-app
+# GDGHanoi-Checkin
