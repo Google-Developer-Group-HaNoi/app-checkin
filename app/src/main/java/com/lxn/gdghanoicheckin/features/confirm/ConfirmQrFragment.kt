@@ -47,7 +47,7 @@ class ConfirmQrFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        callWithLifecycleCreated {
+        callWithLifecycleCreated {scope ->
             viewModel.uiState.onEach { state ->
                 when (state) {
                     is ConfirmViewModel.ConfirmQrState.Error -> {
@@ -66,14 +66,14 @@ class ConfirmQrFragment : Fragment() {
                 }
             }.catch {
                 logError(it.message.toString())
-            }.launchIn(it)
+            }.launchIn(scope)
         }
     }
 
     private suspend fun popLoadingDialog(){
         val currentFragment = findNavController().currentDestination
         currentFragment?.let {
-            delay(100)
+            delay(150)
             if (it.displayName.contains("loadingDialog")){
                 findNavController().popBackStack()
             }
