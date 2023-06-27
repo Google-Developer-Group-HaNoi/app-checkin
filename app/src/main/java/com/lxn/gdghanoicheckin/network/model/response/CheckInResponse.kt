@@ -17,5 +17,4 @@ data class CheckInResponse(
     @SerializedName("titleEvent")
     @Expose
     val titleEvent: String? = ""
-
 ) : Parcelable

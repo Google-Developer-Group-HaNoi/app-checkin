@@ -3,7 +3,7 @@ package com.lxn.gdghanoicheckin.di
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.lxn.gdghanoicheckin.constant.Constant
+import com.lxn.gdghanoicheckin.BuildConfig
 import com.lxn.gdghanoicheckin.network.retrofit.ApiService
 import dagger.Module
 import dagger.Provides
@@ -51,15 +51,16 @@ object NetworkModule {
             level = HttpLoggingInterceptor.Level.HEADERS
             level = HttpLoggingInterceptor.Level.BODY
         }
-        client.connectTimeout(Constant.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
-        client.readTimeout(Constant.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
-        client.writeTimeout(Constant.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
+        client.connectTimeout(BuildConfig.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
+        client.readTimeout(BuildConfig.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
+        client.writeTimeout(BuildConfig.LOADER_EXPIRED_TIME.toLong(), TimeUnit.SECONDS)
         client.addInterceptor { chain ->
             val original = chain.request()
             val request: Request
             val builder: Request.Builder = original.newBuilder()
                 .method(original.method(), original.body())
-            builder.header("token_dev","MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHgsg6vJvRvBxoxvaURjikPbyqCm===" )
+                .addHeader("Authorization", "Bearer ${BuildConfig.TOKEN}" )
+            builder.header("token_dev",BuildConfig.TOKEN )
             request = builder.build()
             return@addInterceptor chain.proceed(request)
         }
@@ -71,7 +72,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BuildConfig.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
     }

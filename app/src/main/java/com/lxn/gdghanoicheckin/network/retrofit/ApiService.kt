@@ -11,7 +11,7 @@ import retrofit2.http.POST
  * Create on 18/07/2021
  * Contact me: namlxcntt@gmail.com
  */
-const val POST_CHECK_IN = "api/check-in/checkUser"
+const val POST_CHECK_IN = "api/check-in/checkUser/v2"
 
 interface ApiService {
     @POST(POST_CHECK_IN)
