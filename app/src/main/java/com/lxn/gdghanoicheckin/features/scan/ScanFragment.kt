@@ -37,9 +37,8 @@ class ScanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initScanner()
-
         callWithLifecycleStarted {
-            delay(420)
+            delay(500)
             if (areAllPermissionsGranted()) {
                 codeScanner.startPreview()
             }

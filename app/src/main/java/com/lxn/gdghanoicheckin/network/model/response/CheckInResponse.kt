@@ -16,5 +16,8 @@ data class CheckInResponse(
     val toAddress: String? = "",
     @SerializedName("titleEvent")
     @Expose
-    val titleEvent: String? = ""
+    val titleEvent: String? = "",
+    @SerializedName("typeAccount")
+    @Expose
+    val typeAccount: Int? = null
 ) : Parcelable

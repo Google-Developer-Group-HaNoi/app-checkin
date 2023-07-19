@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:layout_margin="20dp"
     android:background="@drawable/shape_bg_white_radius"
     android:minWidth="300dp"
-    android:minHeight="350dp">
+    android:minHeight="400dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
@@ -20,40 +20,41 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:gravity="center"
-        tools:text="Chào mừng đến với\n IWD HANOI 2023 ,\nFLUTTER FORWARD EXTENDED"
         android:textSize="@dimen/default_text_size_large"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Chào mừng đến với\n IWD HANOI 2023 ,\nFLUTTER FORWARD EXTENDED" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_description"
         style="@style/DefaultTextViewStyle"
         android:layout_width="match_parent"
-        android:padding="8dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        tools:text="Rất tiếc, chúng tôi không tìm thấy tài khoản này"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:text="Rất tiếc, chúng tôi không tìm thấy tài khoản này" />
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loadingView"
+        style="@style/DefaultTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="4dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_accept"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_type_account"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/complete_success" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_accept"
-        style="@style/DefaultTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@drawable/ic_button"
@@ -64,6 +65,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_description"
         app:layout_constraintStart_toStartOf="@+id/tv_description" />
+
+    <TextView
+        android:id="@+id/tv_type_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/DefaultTextViewStyle"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/account_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
